@@ -8,7 +8,53 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <main>
+        <h1 class="expenses__title">Учёт расходов</h1>
+        <div class="expenses">
+            <div class="expenses__input">
+                <div class="expenses__input-wrapper rub">
+                    <input type="number" class="moneyInput__input" placeholder="Введите сумму" />
+                </div>
+                <select id="categorySelect" class="expenses__category">
+                <option value="" disabled selected hidden>Выберите категорию</option>
+                <option value="Транспорт">Транспорт</option>
+                <option value="Кафе и рестораны">Кафе и рестораны</option>
+                <option value="Аптека">Аптека</option>
+                <option value="Развлечения">Развлечения</option>
+            </select>
+            </div>
+            <button type="button" class="add-button">Добавить</button>
+            <div class="expenses__stats">
+                <div class="stats__item-limit">
+                    <span class="stats__name">Лимит:</span>
+                    <span class="stats__limit rub">10000</span>
+                </div>
+                <div class="stats__item-total">
+                    <span class="stats__name">Всего:</span>
+                    <span class="stats__total rub">1350</span>
+                </div>
+                <div class="stats__item-status">
+                    <span class="stats__name">Статус:</span>
+                    <span class="stats__status">все хорошо</span>
+                </div>
+            </div>
+            <div class="expenses__history">
+                <h2 class="expenses__history-title">История</h2>
+                <ol class="expenses__history-list">
+                    <li class="expenses__history-item">100 руб. - транспорт</li>
+                    <li class="expenses__history-item">200 руб. - кафе и рестораны</li>
+                    <li class="expenses__history-item">50 руб. - аптека</li>
+                    <li class="expenses__history-item">1000 руб. - развлечения</li>
+                </ol>
+                
+            </div>
+            <button class="expenses__reset-button">Сбросить расходы</button>
 
+
+        </div>
+
+
+    </main>
     <script src="js/main.js"></script>
 </body>
 </html>

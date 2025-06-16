@@ -1,3 +1,127 @@
+body, html {
+    font-size: 30px;
+    font-weight: 400;
+    font-family: Arial, sans-serif;
+}
+
 body {
-    background-color: #b93c3c;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.expenses__title {
+    padding: 15px;
+    text-transform: uppercase;
+}
+
+.expenses {
+    max-width: 1010px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 57px 22px;
+}
+
+.expenses__input {
+    width: 484px;
+}
+
+.expenses__input-wrapper {
+    margin-bottom: 18px;
+    padding: 8px 17px;
+    height: 56px;
+    border: 1px solid #000;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.moneyInput__input {
+    font-size: 30px;
+    border: 0;
+    outline: none;
+}
+
+.rub::after {
+    content: " руб.";
+    color: #333;
+    align-self: center;
+}
+
+.expenses__category {
+    width: 100%;
+    padding: 10px 17px;
+    font-size: 30px;
+}
+
+.add-button {
+    width: 370px;
+    vertical-align: top;
+    font-size: inherit;
+    padding: 10px;
+    height: 56px;
+    background-color: #0577e2;
+    color: aliceblue;
+    border: none;
+    opacity: 1;
+    transition: opacity .1s linear;
+}
+
+.add-button:hover {
+    opacity: 0.7;
+}
+
+.expenses__stats {
+    width: 484px;
+}
+
+.stats__name {
+    font-weight: bold;
+}
+
+.stats__item-limit {
+    margin-bottom: 13px;
+}
+
+.stats__item-total {
+    margin-bottom: 35px;
+}
+
+.stats__status {
+    color: rgb(8, 174, 55);
+}
+
+.expenses__history-title {
+    margin-bottom: 21px;
+}
+
+.expenses__history-list {
+    width: 500px;
+    list-style-position: inside;
+}
+
+.expenses__history-item {
+    margin-bottom: 5px;
+}
+
+.expenses__reset-button {
+    margin-top: 12px;
+    width: 484px;
+    padding: 9px 0;
+    font-size: inherit;
+    border: none;
+    color: aliceblue;
+    background-color: #FF0000;
+    opacity: 1;
+    transition: opacity .1s linear;
+}
+
+.expenses__reset-button:hover {
+    opacity: 0.6;
 }
