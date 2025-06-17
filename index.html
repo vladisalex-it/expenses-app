@@ -13,7 +13,7 @@
         <div class="expenses">
             <div class="expenses__input">
                 <div class="expenses__input-wrapper rub">
-                    <input type="number" class="moneyInput__input" placeholder="Введите сумму" />
+                    <input id="expensesInput" type="number" class="moneyInput__input" placeholder="Введите сумму" />
                 </div>
                 <select id="categorySelect" class="expenses__category">
                 <option value="" disabled selected hidden>Выберите категорию</option>
@@ -22,39 +22,38 @@
                 <option value="Аптека">Аптека</option>
                 <option value="Развлечения">Развлечения</option>
             </select>
+
             </div>
-            <button type="button" class="add-button">Добавить</button>
+            <button id="addButton" type="button" class="add-button">Добавить</button>
             <div class="expenses__stats">
                 <div class="stats__item-limit">
                     <span class="stats__name">Лимит:</span>
-                    <span class="stats__limit rub">10000</span>
+                    <span id="statsLimit" class="stats__limit rub">1000</span>
                 </div>
                 <div class="stats__item-total">
                     <span class="stats__name">Всего:</span>
-                    <span class="stats__total rub">1350</span>
+                    <span id="statsTotal" class="stats__total rub">1350</span>
                 </div>
                 <div class="stats__item-status">
                     <span class="stats__name">Статус:</span>
-                    <span class="stats__status">все хорошо</span>
+                    <span id="statsStatus" class="stats__status">все хорошо</span>
                 </div>
+                <button id="resetButton" type="button" class="expenses__reset-button">Сбросить расходы</button>
             </div>
             <div class="expenses__history">
                 <h2 class="expenses__history-title">История</h2>
-                <ol class="expenses__history-list">
-                    <li class="expenses__history-item">100 руб. - транспорт</li>
-                    <li class="expenses__history-item">200 руб. - кафе и рестораны</li>
-                    <li class="expenses__history-item">50 руб. - аптека</li>
-                    <li class="expenses__history-item">1000 руб. - развлечения</li>
+                <p id="emptyMessage" class="expenses__history-empty-message">История пуста...</p>
+                <ol id="expensesHistoryList" class="expenses__history-list">
+                  
                 </ol>
                 
             </div>
-            <button class="expenses__reset-button">Сбросить расходы</button>
 
 
         </div>
 
 
     </main>
-    <script src="js/main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

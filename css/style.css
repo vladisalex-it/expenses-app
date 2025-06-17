@@ -25,7 +25,7 @@ body {
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 57px 22px;
+    gap: 50px 22px;
 }
 
 .expenses__input {
@@ -101,7 +101,13 @@ body {
     margin-bottom: 21px;
 }
 
+.expenses__history-empty-message {
+    font-style: italic;
+    opacity: .8;
+}
+
 .expenses__history-list {
+    display: none;
     width: 500px;
     list-style-position: inside;
 }
@@ -111,7 +117,7 @@ body {
 }
 
 .expenses__reset-button {
-    margin-top: 12px;
+    margin-top: 55px;
     width: 484px;
     padding: 9px 0;
     font-size: inherit;
@@ -124,4 +130,12 @@ body {
 
 .expenses__reset-button:hover {
     opacity: 0.6;
+}
+
+.status-red {
+    color: #FF0000;
+}
+
+.status-green {
+    color: rgb(8, 174, 55);
 }
