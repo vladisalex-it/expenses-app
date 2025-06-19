@@ -5,6 +5,7 @@ const STATUS_IN_LIMIT_CLASSNAME = 'status-green';
 const STATUS_OUT_OF_LIMIT = 'всё плохо';
 const STATUS_OUT_OF_LIMIT_CLASSNAME = 'status-red';
 
+const validationWrapperNode = document.querySelector('#validationWrapper');
 const expensesInputNode = document.querySelector('#expensesInput');
 const categorySelectNode = document.querySelector('#categorySelect');
 const addButtonNode = document.querySelector('#addButton');
@@ -36,14 +37,54 @@ const expensesTotal = () => {
     return sum;
 }
 
+
+// validation
+
+const errorForm = (error, input) => {
+    let errorEl = document.createElement('div');
+    errorEl.className = 'error-text';
+    errorEl.innerText = error;
+    input.appendChild(errorEl);
+}
+
+const clearInputErrors = () => {
+    const expenseErrors = validationWrapperNode.querySelectorAll('.error-text');
+    expenseErrors.forEach(error => {
+        error.remove();
+    });
+}
+
+const clearCategoryErrors = () => {
+    const categoryErrors = validationWrapperNode.querySelectorAll('.error-text');
+    categoryErrors.forEach(error => {
+        if (error.innerText === 'Категория не выбрана!') {
+            error.remove();
+        }
+    });
+}
+
+
 const getExpenseFromUser = () => {
     const enteredExpense = parseInt(expensesInputNode.value.trim());
-    const selectedCategory = categorySelectNode.value.trim();
+    const selectedCategory = categorySelectNode.value;
+
+    clearInputErrors();
+    clearCategoryErrors();
+
+    if (!enteredExpense || isNaN(enteredExpense)) {
+        errorForm('Введите корректную сумму!', validationWrapperNode);
+        return null;
+    }
+
+    if (selectedCategory === '') {
+        errorForm('Категория не выбрана!', validationWrapperNode);
+        return null;
+    }
 
     return {
         amount: enteredExpense,
         category: selectedCategory
-    }
+    };
 }
 
 const clearInputs = () => {
@@ -104,17 +145,23 @@ const renderHistory = () => {
 
 function addButtonHandler() {
     const newExpense = getExpenseFromUser();
-    console.log(newExpense)
-    trackExpense(newExpense);
-    renderExpensesStats();
-    clearInputs();
-}
+    if (newExpense) {
+        trackExpense(newExpense);
+        renderExpensesStats();
+        clearInputs();
+        }
+    }
+    
 
 function resetButtonHandler() {
     expenses = [];
     renderExpensesStats();
+    clearErrors();
+    clearInputs();
 }
 
 
 addButtonNode.addEventListener('click', addButtonHandler);
 resetButtonNode.addEventListener('click', resetButtonHandler);
+expensesInputNode.addEventListener('input', clearInputErrors);
+categorySelectNode.addEventListener('change', clearCategoryErrors);

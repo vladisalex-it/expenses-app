@@ -25,7 +25,7 @@ body {
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 50px 22px;
+    gap: 30px 22px;
 }
 
 .expenses__input {
@@ -138,4 +138,13 @@ body {
 
 .status-green {
     color: rgb(8, 174, 55);
+}
+
+.error-text {
+    font-size: 16px;
+    color: red;
+}
+
+.validation-wrapper {
+    height: 16px;
 }

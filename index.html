@@ -12,17 +12,21 @@
         <h1 class="expenses__title">Учёт расходов</h1>
         <div class="expenses">
             <div class="expenses__input">
-                <div class="expenses__input-wrapper rub">
-                    <input id="expensesInput" type="number" class="moneyInput__input" placeholder="Введите сумму" />
+                <div  id="inputWrapper" class="expenses__input-wrapper rub">
+                    <input id="expensesInput"
+                           type="number" 
+                           class="moneyInput__input" 
+                           placeholder="Введите сумму"
+                           required />
                 </div>
-                <select id="categorySelect" class="expenses__category">
-                <option value="" disabled selected hidden>Выберите категорию</option>
-                <option value="Транспорт">Транспорт</option>
-                <option value="Кафе и рестораны">Кафе и рестораны</option>
-                <option value="Аптека">Аптека</option>
-                <option value="Развлечения">Развлечения</option>
-            </select>
-
+                <select id="categorySelect" class="expenses__category" required>
+                    <option value="" disabled selected hidden>Выберите категорию</option>
+                    <option value="Транспорт">Транспорт</option>
+                    <option value="Кафе и рестораны">Кафе и рестораны</option>
+                    <option value="Аптека">Аптека</option>
+                    <option value="Развлечения">Развлечения</option>
+                </select>
+                <div id="validationWrapper" class="validation-wrapper"></div>
             </div>
             <button id="addButton" type="button" class="add-button">Добавить</button>
             <div class="expenses__stats">
