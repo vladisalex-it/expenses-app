@@ -1,4 +1,4 @@
-const LIMIT = 1000;
+let LIMIT = 1000;
 const CURRENCY = 'руб.'
 const STATUS_IN_LIMIT = 'всё хорошо';
 const STATUS_IN_LIMIT_CLASSNAME = 'status-green';
@@ -15,6 +15,13 @@ const statsStatusNode = document.querySelector('#statsStatus');
 const historyListNode = document.querySelector('#expensesHistoryList');
 const emptyMessage = document.querySelector('#emptyMessage');
 const resetButtonNode = document.querySelector('#resetButton');
+
+const editButtonNode = document.querySelector('#editButton');
+const modalNode = document.querySelector('#modal');
+const modalBoxNode = document.querySelector('#modalBox');
+const modalInputNode = document.querySelector('#modalInput');
+const modalButtonNode = document.querySelector('#modalButton');
+const modalCloseButtonNode = document.querySelector('#modalCloseButton');
 
 let expenses = [];
 
@@ -141,6 +148,33 @@ const renderHistory = () => {
     }
 }
 
+// modal
+editButtonNode.addEventListener('click', function() {
+    modalNode.classList.add('open');
+})
+
+modalCloseButtonNode.addEventListener('click', function() {
+    modalNode.classList.remove('open');
+})
+
+modalNode.addEventListener('click', function(event) {
+    const isClickOutsideContent = !modalBoxNode.contains(event.target);
+    if (isClickOutsideContent) {
+        modalNode.classList.remove('open');
+    }
+})
+    
+function limitChangeHandler() {
+    const newLimit = parseInt(modalInputNode.value);
+    if (!newLimit || isNaN(newLimit) || newLimit < 0) {
+        return;
+    }
+    LIMIT = newLimit;
+    statsLimitNode.innerText = LIMIT;
+    renderExpensesStats();
+    modalNode.classList.remove('open');
+    
+}
 
 
 function addButtonHandler() {
@@ -156,7 +190,8 @@ function addButtonHandler() {
 function resetButtonHandler() {
     expenses = [];
     renderExpensesStats();
-    clearErrors();
+    clearInputErrors();
+    clearCategoryErrors();
     clearInputs();
 }
 
@@ -165,3 +200,4 @@ addButtonNode.addEventListener('click', addButtonHandler);
 resetButtonNode.addEventListener('click', resetButtonHandler);
 expensesInputNode.addEventListener('input', clearInputErrors);
 categorySelectNode.addEventListener('change', clearCategoryErrors);
+modalButtonNode.addEventListener('click', limitChangeHandler);

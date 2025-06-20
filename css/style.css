@@ -9,6 +9,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 15px;
 }
 
 * {
@@ -25,7 +26,7 @@ body {
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 30px 22px;
+    gap: 26px 22px;
 }
 
 .expenses__input {
@@ -58,6 +59,15 @@ body {
     width: 100%;
     padding: 10px 17px;
     font-size: 30px;
+     padding-right: 10px;
+    background-image: url('../images/arrow.png'); 
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    
 }
 
 .add-button {
@@ -73,9 +83,7 @@ body {
     transition: opacity .1s linear;
 }
 
-.add-button:hover {
-    opacity: 0.7;
-}
+
 
 .expenses__stats {
     width: 484px;
@@ -83,6 +91,7 @@ body {
 
 .stats__name {
     font-weight: bold;
+
 }
 
 .stats__item-limit {
@@ -95,6 +104,10 @@ body {
 
 .stats__status {
     color: rgb(8, 174, 55);
+}
+
+.expenses__history {
+    padding-top: 4px;
 }
 
 .expenses__history-title {
@@ -147,4 +160,162 @@ body {
 
 .validation-wrapper {
     height: 16px;
+}
+
+.edit-button {
+    display: inline-block; 
+    vertical-align: bottom;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.edit-image {
+    width: 40px;
+    height: 40px;
+}
+
+
+/* modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .7);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal__box {
+    width: 991px;
+    height: 525px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 47px;
+    background-color: #fff;
+    gap: 0 28px;
+}
+
+.modal__close-button {
+    position: absolute;
+    top: 39px;
+    right: 34px;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+}
+
+.modal-button {
+    width: 370px;
+    vertical-align: top;
+    font-size: inherit;
+    padding: 10px;
+    height: 56px;
+    background-color: #0577e2;
+    color: aliceblue;
+    border: none;
+    opacity: 1;
+    transition: opacity .1s linear;
+}
+
+.modal-button:hover {
+    opacity: 0.7;
+}
+
+.modal__box .expenses__input-wrapper {
+    margin-bottom: 0;
+}
+
+
+/* adaptation */
+
+@media (max-width: 906px) {
+    body {
+        height: 90vh;
+    }
+    .expenses {
+        gap: 16px 22px;
+    }
+    .validation-wrapper {
+        height: 100%;
+    }
+    .expenses__title {
+        text-align: center;
+        margin-bottom: 12px;
+    }
+    .expenses__input,
+    .add-button {
+        margin: 0 auto 8px;
+    }
+    .add-button {
+        text-align: center;
+    }
+}
+
+@media (max-width: 786px) {
+    body {
+        height: 105vh;
+        font-size: 24px;
+        padding: 0 10px;
+    }
+    .moneyInput__input {
+        font-size: 24px;
+        max-width: 100%;
+    }
+    .expenses__category {
+        font-size: 24px;
+    } 
+    .expenses__input {
+        width: 100%;
+    }
+    .add-button {
+        height: 48px;
+        width: 100%;
+    }
+    .expenses__stats {
+        width: 100%;
+    }
+    .expenses__reset-button {
+        margin-top: 30px;
+        width: 100%;
+    }
+    .stats__item-total {
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 400px) {
+    body {
+        height: 95vh;
+    }
+    main {
+        max-width: 100%;
+        overflow: hidden;
+    }
+    .expenses__input-wrapper {
+        padding: 8px 3px;
+    }
+    .moneyInput__input {
+        max-width: 180px;
+    }
+    .expenses__category {
+        padding: 10px 5px;
+    }
+    .edit-image {
+        width: 30px;
+        height: 30px;
+    }
+    
 }
