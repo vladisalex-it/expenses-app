@@ -1,4 +1,4 @@
-let LIMIT = 1000;
+let LIMIT = 40000;
 const CURRENCY = 'руб.'
 const STATUS_IN_LIMIT = 'всё хорошо';
 const STATUS_IN_LIMIT_CLASSNAME = 'status-green';
@@ -25,7 +25,31 @@ const modalCloseButtonNode = document.querySelector('#modalCloseButton');
 
 let expenses = [];
 
+const loadLimitFromLocalStorage = () => {
+    const storedLimit = localStorage.getItem('expenseLimit');
+    if (storedLimit) {
+        LIMIT = parseInt(storedLimit);
+    }
+}
+
+const saveLimitToLocalStorage = () => {
+    localStorage.setItem('expenseLimit', LIMIT); 
+}
+
+const saveExpensesToLocalStorage = () => {
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+}
+
+const loadExpensesFromLocalStorage = () => {
+    const savedExpenses = localStorage.getItem('expenses');
+    if (savedExpenses) {
+        expenses = JSON.parse(savedExpenses);
+        renderExpensesStats();
+    }
+}
+
 const init = () => {
+    loadLimitFromLocalStorage();
     statsLimitNode.innerText = LIMIT;
     statsStatusNode.innerText = STATUS_IN_LIMIT;
     statsStatusNode.classList.add(STATUS_IN_LIMIT_CLASSNAME);
@@ -100,10 +124,11 @@ const clearInputs = () => {
 }
 
 const trackExpense = (newExpense) => {
-    expenses.push(newExpense)
+    expenses.push(newExpense);
+    saveExpensesToLocalStorage();
 }
 
-const renderExpensesStats = () => {
+function renderExpensesStats() {
     renderStats();
     renderHistory();
 }
@@ -148,6 +173,9 @@ const renderHistory = () => {
     }
 }
 
+loadLimitFromLocalStorage();
+loadExpensesFromLocalStorage();
+
 // modal
 editButtonNode.addEventListener('click', function() {
     modalNode.classList.add('open');
@@ -171,6 +199,7 @@ function limitChangeHandler() {
     }
     LIMIT = newLimit;
     statsLimitNode.innerText = LIMIT;
+    saveLimitToLocalStorage(); 
     renderExpensesStats();
     modalNode.classList.remove('open');
     
@@ -188,7 +217,8 @@ function addButtonHandler() {
     
 
 function resetButtonHandler() {
-    expenses = [];
+    expenses.length = 0;
+    saveExpensesToLocalStorage();
     renderExpensesStats();
     clearInputErrors();
     clearCategoryErrors();
