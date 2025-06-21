@@ -344,7 +344,7 @@ body {
 
 @media (max-width: 400px) {
     body {
-        height: 95vh;
+        height: 100vh;
     }
     main {
         max-width: 100%;
